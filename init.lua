@@ -36,7 +36,7 @@ end
 ---------------------------- BULLETS -----------------------------------------------------------
 
 
-mobs:register_arrow("enemy;enemy_bullet", {
+mobs:register_arrow("enemy:enemy_bullet", {
 	visual = "sprite",
 	visual_size = {x=0.4, y=0.4},
 	textures = {"enemy_buckball.png"},
@@ -70,7 +70,7 @@ mobs:register_arrow("enemy;enemy_bullet", {
 ---------------------------------- FLAMER ------------------------------------------------------
 
 
-mobs:register_arrow("enemy;enemy_flame", {
+mobs:register_arrow("enemy:enemy_flame", {
 	visual = "cube",
 	visual_size = {x=0.01, y=0.01},
     texture = {"empty.png"},
