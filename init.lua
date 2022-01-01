@@ -913,7 +913,8 @@ mobs:spawn({
 "default:permafrost",
 "default:permafrost_with_stones",
 "default:permafrost_with_moss",
-"default:papyrus"
+"default:papyrus",
+"default:dirt_with_grass"
 },
 neighbors = {
 "air",
