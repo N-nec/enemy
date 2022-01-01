@@ -145,7 +145,7 @@ mobs:register_mob("enemy:gunner", {
 	stepheight = 1.6,
 	drops = {
 		{name = "default:wood",
-		chance = 1, min = 50, max = 300},
+		chance = 1, min = 5, max = 30},
 	},
 	water_damage = 1,
 	lava_damage = 2,
@@ -373,7 +373,7 @@ mobs:register_mob("enemy:tank", {
 	stepheight = 2.6,
 	drops = {
 		{name = "default:wood",
-		chance = 1, min = 50, max = 3000},
+		chance = 1, min = 10, max = 50},
 	},
 	water_damage = 0,
 	lava_damage = 2,
@@ -565,7 +565,7 @@ mobs:register_mob("enemy:enemy", {
 	stepheight = 1.6,
 	drops = {
 		{name = "default:wood",
-		chance = 1, min = 50, max = 300},
+		chance = 1, min = 5, max = 50},
 	},
 	water_damage = 0,
 	lava_damage = 2,
@@ -643,7 +643,7 @@ mobs:register_mob("enemy:flamer", {
 	-- drops wood and chance of apples when dead
 	drops = {
 		{name = "default:wood",
-		chance = 1, min = 50, max = 300},
+		chance = 1, min = 5, max = 50},
 	},
 	-- damaged by
 	water_damage = 0,
