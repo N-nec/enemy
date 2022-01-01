@@ -944,7 +944,7 @@ neighbors = {
 	max_height = 100,
             -- interval = 30
 
-             day_toggle = false
+             day_toggle = nil
 
 })
 
