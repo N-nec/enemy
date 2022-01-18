@@ -1,7 +1,5 @@
 
 
---dofile(minetest.get_modpath("enemy").."/turret.lua")
-
 -- Enemy Mod =) ------------------- 2021 -----------------------------
 
 
