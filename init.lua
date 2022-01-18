@@ -1,4 +1,6 @@
 
+
+
 -- Enemy Mod =) ------------------- 2021 -----------------------------
 
 
@@ -100,6 +102,75 @@ mobs:register_arrow("enemy:enemy_flame", {
 })
 
 
+----------------------------------------------------------------------------------------------------
+
+
+
+mobs:register_mob("enemy:black", {
+	-- animal, monster, npc
+	type = "monster",
+    pathfinding = true,
+    glow = 5,
+	passive = false,
+    reach = 2,
+	damage = 7,
+    attack_animals = true,
+	attack_npcs = false,
+	attack_players = true,
+	group_attack = true,
+	attack_type = "shoot",
+	shoot_interval = 0.5,
+	arrow = "enemy:enemy_bullet",
+	shoot_offset = 1.7,
+	attacks_monsters = false,
+
+	hp_min = 10, hp_max = 50, armor = 100,
+    floats = {x=0,y=0,z=0},
+	collisionbox = {-0.35,-1,-0.35, 0.35,1.2,0.35},
+	visual = "mesh",
+	mesh = "enemy.b3d",
+	drawtype = "front",
+	textures = {
+		{"Enemy_bamo.png", "enemy_gun.png"},
+	},
+	visual_size = {x=1, y=1},
+	makes_footstep_sound = true,
+	sounds = {"enemy_ak",
+                 max_hear_distance = 15},
+    shoot_sounds = {"enemy_ak",
+                 max_hear_distance = 15},
+	walk_velocity = 4,
+	run_velocity = 4,
+	jump = true,
+	stepheight = 1.6,
+	drops = {
+		{name = "rangedweapons:ammo",
+		chance = 1, min = 50, max = 300},
+	},
+	water_damage = 1,
+	lava_damage = 2,
+	light_damage = 0,
+    floats = {x=0,y=0,z=0},
+	view_range = 25,
+	animation = {
+       speed_normal = 30,
+		speed_run = 30,
+		stand_start = 0,
+		stand_end = 79,
+		walk_start = 168,
+		walk_end = 187,
+		run_start = 168,
+		run_end = 187,
+		punch_start = 200,
+		punch_end = 219,
+    },
+ sounds = {
+		shoot_attack = "enemy_ak",
+        distance = 44,
+        war_cry = "enemy_shotgun_reload_full"
+	}
+
+})
 
 
 ----------------------------------------------------------------------------------------------------
@@ -144,8 +215,8 @@ mobs:register_mob("enemy:gunner", {
 	jump = true,
 	stepheight = 1.6,
 	drops = {
-		{name = "default:wood",
-		chance = 1, min = 5, max = 30},
+		{name = "rangedweapons:ammo",
+		chance = 1, min = 50, max = 300},
 	},
 	water_damage = 1,
 	lava_damage = 2,
@@ -220,7 +291,7 @@ mobs:register_mob("enemy:helicopter", {
 	floats = {x=0,y=0,z=0},
 	jump = true,
 	stepheight = 2.6,
-    drops = { {name = "default:wood",
+    drops = { {name = "rangedweapons:ammo",
 		chance = 1, min = 1, max = 3},
 	},
 	water_damage = 0,
@@ -245,7 +316,7 @@ mobs:register_mob("enemy:helicopter", {
 sounds = {
 		random = "helicopter_motor",
 		shoot_attack = "enemy_ak",
-        distance = 64
+        distance = 44
 	}
 
 })
@@ -297,7 +368,7 @@ mobs:register_mob("enemy:helicopter2", {
 	floats = {x=0,y=0,z=0},
 	jump = true,
 	stepheight = 2.6,
-    drops = { {name = "default:wood",
+    drops = { {name = "rangedweapons:ammo",
 		chance = 1, min = 1, max = 3},
 	},
 	water_damage = 0,
@@ -320,7 +391,7 @@ mobs:register_mob("enemy:helicopter2", {
 sounds = {
 		random = "helicopter_motor",
 		shoot_attack = "enemy_ak",
-        distance = 64
+        distance = 44
 
 	}
 
@@ -372,8 +443,8 @@ mobs:register_mob("enemy:tank", {
 	jump = true,
 	stepheight = 2.6,
 	drops = {
-		{name = "default:wood",
-		chance = 1, min = 10, max = 50},
+		{name = "rangedweapons:ammo",
+		chance = 1, min = 50, max = 3000},
 	},
 	water_damage = 0,
 	lava_damage = 2,
@@ -439,7 +510,7 @@ mobs:register_mob("enemy:artic", {
 	jump = true,
 	stepheight = 2.6,
 	drops = {
-		{name = "default:wood",
+		{name = "rangedweapons:ammo",
 		chance = 1, min = 1, max = 3},
 	},
 	water_damage = 0,
@@ -452,7 +523,7 @@ mobs:register_mob("enemy:artic", {
 	},
     sounds = {
 		shoot_attack = "enemy_ak",
-        distance = 64,
+        distance = 44,
         war_cry = "enemy_shell_insert"
 
 	}
@@ -564,8 +635,8 @@ mobs:register_mob("enemy:enemy", {
 	jump = true,
 	stepheight = 1.6,
 	drops = {
-		{name = "default:wood",
-		chance = 1, min = 5, max = 50},
+		{name = "rangedweapons:ammo",
+		chance = 1, min = 50, max = 300},
 	},
 	water_damage = 0,
 	lava_damage = 2,
@@ -642,8 +713,8 @@ mobs:register_mob("enemy:flamer", {
 	stepheight = 1.6,
 	-- drops wood and chance of apples when dead
 	drops = {
-		{name = "default:wood",
-		chance = 1, min = 5, max = 50},
+		{name = "rangedweapons:ammo",
+		chance = 1, min = 50, max = 300},
 	},
 	-- damaged by
 	water_damage = 0,
@@ -835,7 +906,64 @@ mobs:register_egg("enemy:helicopter2", "Heli from Hell", "default_tree.png", 1)
 
 --------------------- SPAWN ---------------------------
 
-----
+mobs:spawn({
+	name = "enemy:black",
+	nodes = {
+
+"default:snow",
+"default:snowblock",
+"default:ice",
+"default:cave_ice",
+"ethereal:mushroom_dirt",
+"ethereal:bamboo_dirt",
+"default:dirt_with_snow",
+"default:dirt_with_rainforest_litter",
+"default:dirt_with_coniferous_litter",
+"default:dry_dirt",
+"default:dirt_with_grass",
+"default:permafrost",
+"default:permafrost_with_stones",
+"default:permafrost_with_moss",
+"default:papyrus"
+},
+neighbors = {
+"air",
+"default:dry_shrub",
+"default:junglegrass",
+"default:grass_1",
+"default:grass_2",
+"default:grass_3",
+"default:grass_4",
+"default:grass_5",
+"default:dry_grass_1",
+"default:dry_grass_2",
+"default:dry_grass_3",
+"default:dry_grass_4",
+"default:dry_grass_5",
+"default:fern_1",
+"default:fern_2",
+"default:fern_3",
+"default:marram_grass_1",
+"default:marram_grass_2",
+"default:marram_grass_3"
+},
+	max_light = 14,
+	min_light = 0,
+	chance = 2000,
+	active_object_count = 1,
+	min_height = 0,
+	max_height = 100,
+            -- interval = 30
+
+             day_toggle = false
+})
+
+
+
+mobs:register_egg("enemy:black", "Enemy", "default_tree.png", 1)
+
+
+-----------------------------------------------------
 mobs:spawn({
 	name = "enemy:enemy",
 	nodes = {
