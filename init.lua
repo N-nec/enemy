@@ -1,5 +1,6 @@
 
 
+--dofile(minetest.get_modpath("enemy").."/turret.lua")
 
 -- Enemy Mod =) ------------------- 2021 -----------------------------
 
@@ -131,7 +132,7 @@ mobs:register_mob("enemy:black", {
 	mesh = "enemy.b3d",
 	drawtype = "front",
 	textures = {
-		{"Enemy_bamo.png", "enemy_gun.png"},
+		{"Enemy_black.png", "enemy_gun.png"},
 	},
 	visual_size = {x=1, y=1},
 	makes_footstep_sound = true,
