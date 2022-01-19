@@ -117,7 +117,10 @@ mobs:register_mob("enemy:black", {
 	attack_npcs = false,
 	attack_players = true,
 	group_attack = true,
-	attack_type = "shoot",
+	attack_type = "dogshoot",
+	dogshoot_switch = 1,
+	dogshoot_count_max = 15, -- shoot seconds
+	dogshoot_count2_max = 3, -- dogfight seconds
 	shoot_interval = 0.5,
 	arrow = "enemy:enemy_bullet",
 	shoot_offset = 1.7,
@@ -130,7 +133,7 @@ mobs:register_mob("enemy:black", {
 	mesh = "enemy.b3d",
 	drawtype = "front",
 	textures = {
-		{"Enemy_black.png", "enemy_gun.png"},
+		{"Enemy_black.png"},
 	},
 	visual_size = {x=1, y=1},
 	makes_footstep_sound = true,
@@ -959,7 +962,7 @@ neighbors = {
 
 
 
-mobs:register_egg("enemy:black", "Enemy", "default_tree.png", 1)
+mobs:register_egg("enemy:black", "Enemy black", "default_tree.png", 1)
 
 
 -----------------------------------------------------
