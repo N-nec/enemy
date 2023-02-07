@@ -82,7 +82,7 @@ mobs:register_arrow("enemy:enemy_flame", {
 
 
 
-mobs:register_mob("enemy:solider", {
+mobs:register_mob("enemy:soldier", {
 	type = "monster",
 	reach = 3,
 	damage = 2,
@@ -144,7 +144,7 @@ sounds = {
 })
 
 
-mobs:register_egg("enemy:solider", "solider", "default_tree.png", 1)
+mobs:register_egg("enemy:soldier", "soldier", "default_tree.png", 1)
 
 ----------------------------------------------------------------------------------------------
 
@@ -799,7 +799,7 @@ mobs:register_mob("enemy:flamer", {
 
 
 mobs:spawn({
-	name = "enemy:solider",
+	name = "enemy:soldier",
 	nodes = {
 "default:desert_stone",
 "default:desert_cobble",
