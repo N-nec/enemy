@@ -1,6 +1,5 @@
 
 
---dofile(minetest.get_modpath("enemy").."/alien.lua")
 
 -- Enemy Mod =) ------------------- 2021 -----------------------------
 
@@ -10,30 +9,6 @@ if minetest.setting_get("log_mods") then
 end
 
 
----------------- SHOOT FUNCTION ------------------------------
-
---[[
-local mobs_shoot_arrow = function(itemstack, player)
-	for _,arrow in ipairs(arrows) do
-		if player:get_inventory():get_stack("main", player:get_wield_index()+1):get_name() == arrow[1] then
-			if not minetest.setting_getbool("creative_mode") then
-				player:get_inventory():remove_item("main", arrow[1])
-			end
-			local playerpos = player:getpos()
-			local obj = minetest.env:add_entity({x=playerpos.x,y=playerpos.y+1.5,z=playerpos.z}, arrow[2])
-			local dir = player:get_look_dir()
-			obj:setvelocity({x=dir.x*19, y=dir.y*19, z=dir.z*19})
-			obj:setacceleration({x=dir.x*-3, y=-10, z=dir.z*-3})
-			obj:setyaw(player:get_look_yaw()+math.pi)
-			if obj:get_luaentity().player == "" then
-				obj:get_luaentity().player = player
-			end
-			obj:get_luaentity().node = player:get_inventory():get_stack("main", 1):get_name()
-			return true
-		end
-	end
-	return false
-end]]
 ---------------- BULLETS -----------------------------------------------------------
 
 
@@ -49,7 +24,7 @@ mobs:register_arrow("enemy:enemy_bullet", {
         hit_player = function(self, player)
 		player:punch(self.object, 1.0, {
 			full_punch_interval = 1.0,
-			damage_groups = {fleshy = 15},
+			damage_groups = {fleshy = 3},
 		}, nil)
 	end,
 
@@ -73,19 +48,19 @@ mobs:register_arrow("enemy:enemy_bullet", {
 mobs:register_arrow("enemy:enemy_flame", {
 	visual = "sprite",
 	visual_size = {x=0.2, y=0.2},
-    texture = {"empty.png"},
+    texture = {"enemy_bullet2.png"},
     timer = 4,
 	velocity = 20,
     tail = 1,
 	tail_texture = "enemy_fire.png",
-	tail_size = 1,
+	tail_size = 2,
 	glow = 20,
 	expire = 0.3,
     drop = true,
         hit_player = function(self, player)
 		player:punch(self.object, 1.0, {
 			full_punch_interval = 1.0,
-			damage_groups = {fleshy = 15},
+			damage_groups = {fleshy = 3},
 		}, nil)
 	end,
 
@@ -171,69 +146,7 @@ sounds = {
 
 mobs:register_egg("enemy:solider", "solider", "default_tree.png", 1)
 
-
--- ---------------
---
---
--- mobs:register_mob("enemy:robocar", {
--- 	type = "monster",
--- 	hp_max = 35,
--- 	passive = false,
---     floats = 1,
--- 	collisionbox = {-0.4, -0.01, -0.4, 0.4, 1, 0.4},
--- 	visual = "mesh",
---     visual_size = {x=4.5, y=4},
---     drawtype = "front",
--- 	mesh = "enemy_car.b3d",
--- 	textures = {
--- 		{"enemy_car.png"},
--- 	},
---     attack_animals = true,
--- 	attack_npcs = true,
--- 	attack_players = true,
--- 	group_attack = true,
--- 	makes_footstep_sound = true,
---     attacks_monsters = false,
--- 	sounds = {
--- 		war_cry = "mobs_wolf_attack",
--- 	},
--- 	view_range = 25,
---     glow = 10,
--- 	walk_velocity = 2,
--- 	run_velocity = 3,
--- 	stepheight = 1.6,
--- 	damage = 2,
--- 	armor = 200,
--- 	attack_type = "dogfight",
--- 	drops = {
--- 		{name = "mobs:meat_raw",
--- 		chance = 1,
--- 		min = 2,
--- 		max = 3,},
--- 	},
--- 	drawtype = "front",
--- 	water_damage = 0,
--- 	lava_damage = 5,
--- 	light_damage = 0,
---
--- 	animation = {
--- 		speed_normal = 20,
--- 		speed_run = 30,
--- 		stand_start = 0,
--- 		stand_end = 20,
--- 		walk_start = 30,
--- 		walk_end = 50,
--- 		run_start = 30,
--- 		run_end = 50,
--- 		punch_start = 60,
--- 		punch_end = 90,
--- 	},
---
--- })
-
-
--- --[[
--- mobs:register_egg("enemy:robocar", "RoboCar", "default_tree.png", 1)]]
+----------------------------------------------------------------------------------------------
 
 
 mobs:register_mob("enemy:black", {
@@ -243,7 +156,7 @@ mobs:register_mob("enemy:black", {
     glow = 20,
 	passive = false,
     reach = 2,
-	damage = 7,
+	damage = 2,
     attack_animals = true,
 	attack_npcs = false,
 	attack_players = true,
@@ -316,9 +229,9 @@ mobs:register_mob("enemy:gunner", {
     pathfinding = true,
     glow = 5,
 	passive = false,
-    reach = 2,
-	damage = 7,
-    attack_animals = true,
+        reach = 2,
+	damage = 2,
+        attack_animals = true,
 	attack_npcs = false,
 	attack_players = true,
 	group_attack = true,
@@ -384,10 +297,10 @@ mobs:register_mob("enemy:gunner", {
 mobs:register_mob("enemy:helicopter", {
 	-- animal, monster, npc
 	type = "monster",
-    glow = 5,
+        glow = 5,
 	passive = false,
-    reach = 2,
-	damage = 10,
+        reach = 2,
+	damage = 2,
     ------- FLY -------------
          fly = true,
 	fly_in = {
@@ -433,7 +346,7 @@ mobs:register_mob("enemy:helicopter", {
 
 	view_range = 35,
 	animation = {
-speed_normal = 50,
+        speed_normal = 50,
 		speed_run = 60,
 		stand_start = 11,
 		stand_end = 20,
@@ -463,10 +376,10 @@ sounds = {
 mobs:register_mob("enemy:helicopter2", {
 	-- animal, monster, npc
 	type = "monster",
-    glow = 5,
+         glow = 5,
 	passive = false,
-    reach = 2,
-	damage = 10,
+        reach = 2,
+	damage = 2,
     ------- FLY -------------
          fly = true,
 	fly_in = {
@@ -540,9 +453,9 @@ mobs:register_mob("enemy:tank", {
 	-- animal, monster, npc
 	type = "monster",
 	passive = false,
-    glow = 5,
-    reach = 2,
-	damage = 10,
+        glow = 5,
+        reach = 2,
+	damage = 2,
     floats = 1,
     pathfinding = true,
     attack_animals = false,
@@ -609,7 +522,7 @@ mobs:register_mob("enemy:artic", {
 	passive = false,
     glow = 5,
     reach = 2,
-	damage = 10,
+	damage = 2,
     floats = 1,
     pathfinding = true,
     attack_animals = false,
@@ -672,16 +585,16 @@ mobs:register_mob("enemy:dog", {
 	type = "monster",
 	hp_max = 35,
 	passive = false,
-    floats = 1,
+        floats = 1,
 	collisionbox = {-0.4, -0.01, -0.4, 0.4, 1, 0.4},
 	visual = "mesh",
-    visual_size = {x=1.5, y=1},
-    drawtype = "front",
+        visual_size = {x=1.5, y=1},
+        drawtype = "front",
 	mesh = "enemy_dog.x",
 	textures = {
 		{"enemy_dog.png"},
 	},
-    attack_animals = true,
+        attack_animals = true,
 	attack_npcs = true,
 	attack_players = true,
 	group_attack = true,
@@ -691,7 +604,7 @@ mobs:register_mob("enemy:dog", {
 		war_cry = "mobs_wolf_attack",
 	},
 	view_range = 25,
-    glow = 10,
+        glow = 10,
 	walk_velocity = 2,
 	run_velocity = 3,
 	stepheight = 1.6,
@@ -732,12 +645,12 @@ mobs:register_mob("enemy:dog", {
 mobs:register_mob("enemy:enemy", {
 	-- animal, monster, npc
 	type = "monster",
-	passive = false,
-    glow = 5,
-    reach = 2,
-	damage = 7,
-    floats = 1,
-    attack_animals = true,
+  	passive = false,
+        glow = 5,
+        reach = 2,
+	damage = 2,
+        floats = 1,
+        attack_animals = true,
 	attack_npcs = false,
 	attack_players = true,
 	group_attack = true,
@@ -807,12 +720,12 @@ sounds = {
 mobs:register_mob("enemy:flamer", {
 	-- animal, monster, npc
 	type = "monster",
-    pathfinding = true,
-    glow = 5,
+        pathfinding = true,
+        glow = 5,
 	passive = false,
-    reach = 2,
-	damage = 7,
-    floats = 1,
+        reach = 2,
+	damage = 2,
+        floats = 1,
     attack_animals = false,
 	attack_npcs = false,
 	attack_players = true,
