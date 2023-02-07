@@ -93,7 +93,7 @@ mobs:register_mob("enemy:solider", {
 	dogshoot_count_max = 15, -- shoot seconds,
 	dogshoot_count2_max = 3, -- dogfight seconds",
 	shoot_interval = 0.5,
-	shoot_offset = 1.1,
+	shoot_offset = 1,
     stepheight = 1.6,
 	arrow = "enemy:enemy_bullet",
 	hp_min = 62,
@@ -167,7 +167,7 @@ mobs:register_mob("enemy:black", {
 	dogshoot_count2_max = 3, -- dogfight seconds
 	shoot_interval = 0.5,
 	arrow = "enemy:enemy_bullet",
-	shoot_offset = 1.1,
+	shoot_offset = 1,
 	attacks_monsters = false,
 
 	hp_min = 30, hp_max = 70, armor = 100,
